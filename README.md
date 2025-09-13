@@ -31,7 +31,7 @@ This project focuses on calibrating the parameters of an Ordinary Differential E
 Our publication:
 
 
-Our publication largely depends on publication:
+Our implementation largely depends on the following publication:
 - T. Gaskin, G. Pavliotis, M. Girolami. *Neural parameter calibration for large-scale multiagent models.* PNAS **120**, 7, 2023.
 https://doi.org/10.1073/pnas.2216415120 (`HarrisWilson` and `SIR` models)
 
