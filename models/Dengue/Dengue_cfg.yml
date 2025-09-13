@@ -1,0 +1,40 @@
+Data:
+  synthetic_data:
+    dt: 0.01        # time-step of ODE solver
+    num_steps: 48   # number of generated data steps (= batch_size)
+    burn_in: 2      # number of burn-in steps
+
+NeuralNet:
+  num_layers: !is-positive-int 2
+  nodes_per_layer:
+    default: !is-positive-int 20
+  biases:
+    default: ~
+  activation_funcs:
+    default: sigmoid
+    layer_specific:
+      -1: abs
+  dropout:
+    default: 0.0
+    layer_specific:
+      -1: 0.0
+  layernorm:
+    default: True
+    layer_specific:
+      -1: False
+  learning_rate: !is-positive 0.002
+
+Training:
+  batch_size: 48  # divisible or closest to # of original training dataset
+  Dengue_data_loss: True
+  grad_clip: 1.0  # Clip gradient within [-grad_clip, grad_clip]
+  num_threads: ~
+  device: cpu   # cpu or cuda _ CnnLstm prefers cuda & NeuralNet prefers cpu
+  loss_function:
+    name: MSELoss  # or L1Loss, kldivloss, MSELoss
+    kwargs:
+      reduction: none # Do not sum over k
+  to_learn: [Ms0, Me0, Mi0, Hs0, He0, Hi0, Hr0, beta_h, beta_m, gamma_h, lambda, mu_m, theta_h, theta_m]
+  true_parameters:
+    mu_h: 0.0004
+

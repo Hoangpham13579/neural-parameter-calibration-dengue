@@ -1,0 +1,39 @@
+# An example manifest file that contains model information and can be used
+# to register a model in the utopya model registry
+#
+# NOTE Updating the information in this file does NOT automatically update the
+#      corresponding entries in the model registry! Call
+#
+#           utopya models register from-manifest [MANIFEST_FILE]...
+#
+#      for updating information in the model registry.
+---
+# -- General information and options
+model_name: Dengue
+project_name: NeuralABM_dengue
+
+# -- Path information, interpreted relative to this file
+paths:
+  executable: run.py
+  source_dir: ./
+  default_cfg: Dengue_cfg.yml
+  # default_plots: Dengue_plots.yml
+  # base_plots: Dengue_base_plots.yml
+  # py_plots_dir: ../../model_plots/Dengue
+
+# -- Metadata
+metadata:
+  description: Dengue model with Neural core
+  long_description: >
+    This model is based on the Dengue ODE model based on the paper, namely "Sensitivity, uncertainty and identifiability analyses to define a dengue transmission model with real data of an endemic municipality of Colombia".
+
+  version: "0.1"
+  author: Pham Viet Hoang (original author _ Thomas Gaskin)
+  license: LGPLv3+
+  language: python3
+  requirements:
+    - ruamel.yaml
+    - numpy
+    - h5py
+    - torch
+  utopya_compatibility: ">=1.0.0a1"

@@ -1,0 +1,65 @@
+# (NOTE) All the parameters should be defined under "parameter_space" variable to successfully work.
+perform_sweep: True
+parameter_space:
+  seed: !sweep
+    default: 27
+    range: [1]
+  write_start: 1
+  write_every: 10        # every 10 batches (#_batches = #_epoch *(#_training_set // #_batch_size))
+  num_epochs: 2000
+  Dengue:
+    model_note: cambodia
+    Data:
+      load_from_dir: data/Dengue/cambodia/data.h5
+      # Section of training data to use as train and test data (default is entire training data)
+      training_data_size: !slice [0, 48]
+      synthetic_data:
+        dt: 0.01        # time-step of ODE solver
+        num_steps: 48   # number of generated data steps (= batch_size)
+
+    NeuralNet:
+      use_neuralnet: True
+      num_layers: 3
+      nodes_per_layer:
+        default: 20
+      biases:
+        default: ~
+      activation_funcs:
+        default: sigmoid  # (or leakyrelu, relu) careful of weight init when change activation function
+        layer_specific:
+          -1: abs
+      dropout:
+        default: 0.0
+        layer_specific:
+          -1: 0.0
+      layernorm:
+        default: False
+        layer_specific:
+          -1: False
+      learning_rate: 0.0005  # max lr for cyclic learning rate scheduler
+      optimizer: Adam       # (or Adam, RMSprop, SGD)
+
+    CnnLstm:
+      use_cnnlstm: False
+      lstm_input_size: 1    # lstm_input_size = window_size
+      hidden_size: 32       # hidden units in LSTM layer
+      num_lstm_layers: 5    # max lr for cyclic lr scheduler
+      optimizer: Adam       # (or Adam, RMSprop, SGD)
+      attention_heads: 4    # number of attention heads
+      learning_rate: 0.0005  # max lr for cyclic learning rate scheduler
+
+    Training:
+      batch_size: 48        # divisible or closest to # of original training dataset
+      Dengue_data_loss: True
+      grad_clip: 0.2        # Clip gradient within [-grad_clip, grad_clip]
+      num_threads: ~
+      device: cpu           # cpu or cuda _ CnnLstm prefers cuda & NeuralNet prefers cpu
+      save_model: True      # Save model checkpoint
+      loss_function:
+        name: MSELoss       # or L1Loss, kldivloss, MSELoss
+        kwargs:
+          reduction: none   # "mean" default, "sum" or "none"
+      # Set of calibrated parameters (NN's output)
+      to_learn: [Hi0, Me0, Hr0, Hs0, He0, Ms0, Mi0, beta_h, beta_m, gamma_h, lambda, mu_m, theta_h, theta_m]
+      true_parameters:
+        mu_h: 0.0004

@@ -1,0 +1,8 @@
+# FOR DEBUGGING MODE
+# Current running command
+utopya run Dengue --cs bello --no-eval --debug
+utopya run Dengue --cs iquitos --no-eval --debug
+utopya run Dengue --cs sanjuan --no-eval --debug
+utopya run Dengue --cs vietnam --no-eval --debug
+utopya run Dengue --cs philippines --no-eval --debug
+utopya run Dengue --cs cambodia --no-eval --debug
