@@ -1,5 +1,5 @@
 # Neural Parameter Calibration for Dengue Outbreak Forecasting 
-### Pham Viet Hoang, Nguyen Trung Dang Khuong, Thirumalaisamy P. Velavan, Tran Duc Khanh
+### Viet Hoang Pham, Trung Dang Khuong Nguyen, Thirumalaisamy P. Velavan, Duc Khanh Tran
 
 --- 
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
@@ -28,10 +28,7 @@ $$
 
 This project focuses on calibrating the parameters of an Ordinary Differential Equations (ODE) system to improve Dengue Outbreak forecasting with the help of a neural network. The repository includes all code and models featured in our publications related to this subject, along with the scripts used for generating figures.
 
-Our publication:
-
-
-Our publication largely depends on publication:
+Our implementation largely depends on publications:
 - T. Gaskin, G. Pavliotis, M. Girolami. *Neural parameter calibration for large-scale multiagent models.* PNAS **120**, 7, 2023.
 https://doi.org/10.1073/pnas.2216415120 (`HarrisWilson` and `SIR` models)
 
