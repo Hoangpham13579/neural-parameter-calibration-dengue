@@ -28,10 +28,7 @@ $$
 
 This project focuses on calibrating the parameters of an Ordinary Differential Equations (ODE) system to improve Dengue Outbreak forecasting with the help of a neural network. The repository includes all code and models featured in our publications related to this subject, along with the scripts used for generating figures.
 
-Our publication:
-
-
-Our implementation largely depends on the following publication:
+Our implementation largely depends on publications:
 - T. Gaskin, G. Pavliotis, M. Girolami. *Neural parameter calibration for large-scale multiagent models.* PNAS **120**, 7, 2023.
 https://doi.org/10.1073/pnas.2216415120 (`HarrisWilson` and `SIR` models)
 
