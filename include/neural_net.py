@@ -261,7 +261,7 @@ class NeuralNet(nn.Module):
         :param prior (optional): initial prior distribution of the parameters. If given, the neural net will
             initially output a random value within that distribution.
         :param prior_tol (optional): the tolerance with which the prior distribution should be met
-        :param prior_max_iter (optional): maximum number of training iterations to hit the prior target
+        :param prior_max_iter (optional): maximum number of training iterations to Itot the prior target
         :param optimizer: the name of the optimizer to use. Default is the torch.optim.Adam optimizer.
         :param learning_rate: the learning rate of the optimizer. Default is 1e-3.
         :param __: Additional model parameters (ignored)

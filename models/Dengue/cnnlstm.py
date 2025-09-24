@@ -181,11 +181,11 @@ class Dengue_CNN_LSTM:
         """ODE system for the Dengue model
         Args:
             t: Time point
-            y: State vector [Ms, Me, Mi, Hs, He, Hi, Hr, Hit]
+            y: State vector [Ms, Me, Mi, Hs, He, Hi, Hr, Itot]
             parameters: Dictionary containing model parameters
         """
-        # Ms, Me, Mi, Hs, He, Hi, Hr, Hit = y
-        Hit, Hi, Me, Hr, Hs, He, Ms, Mi = y
+        # Ms, Me, Mi, Hs, He, Hi, Hr, Itot = y
+        Itot, Hi, Me, Hr, Hs, He, Ms, Mi = y
         lambda_, beta_m, mu_m, theta_m, mu_h, beta_h, theta_h, gamma_h = params
     
         # Calculate total populations
@@ -234,7 +234,7 @@ class Dengue_CNN_LSTM:
         # Go through each batch
         # self.batches: [0, batch_size, 2*batch_size, ..., len(training_data)]
         for batch_no, batch_idx in enumerate(self.batches[:-1]):
-            # (NOTE) Input data point at t=0 of Hit compartment only to predict the future outbreak (not the whole dataset)
+            # (NOTE) Input data point at t=0 of Itot compartment only to predict the future outbreak (not the whole dataset)
             batch_data = self.training_data[batch_idx, 0, :].unsqueeze(dim=0)  #(1, 1)
 
             # (NOTE) Each set of parameters is used to estimate the whole batch latent variables --> predicted_parameters has shape (#_latent_var,) only
@@ -261,8 +261,8 @@ class Dengue_CNN_LSTM:
                 for p in self.all_parameters
             }
             
-            Hit0 = torch.tensor(float(batch_data[0].squeeze()), dtype=torch.float32).to(self.device)
-            y0 = torch.stack([Hit0, parameters["Hi0"], parameters["Me0"], 
+            Itot0 = torch.tensor(float(batch_data[0].squeeze()), dtype=torch.float32).to(self.device)
+            y0 = torch.stack([Itot0, parameters["Hi0"], parameters["Me0"], 
                                parameters["Hr0"], parameters["Hs0"], 
                                parameters["He0"], parameters["Ms0"], 
                                parameters["Mi0"]])

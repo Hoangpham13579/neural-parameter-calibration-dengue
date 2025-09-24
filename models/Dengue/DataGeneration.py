@@ -18,11 +18,11 @@ def apolo_model_7(t, y, params):
         """ODE system for the Dengue model
         Args:
             t: Time point
-            y: State vector [Ms, Me, Mi, Hs, He, Hi, Hr, Hit]
+            y: State vector [Ms, Me, Mi, Hs, He, Hi, Hr, Itot]
             parameters: Dictionary containing model parameters
         """
-        # Ms, Me, Mi, Hs, He, Hi, Hr, Hit = y
-        Hit, Hi, Me, Hr, Hs, He, Ms, Mi = y
+        # Ms, Me, Mi, Hs, He, Hi, Hr, Itot = y
+        Itot, Hi, Me, Hr, Hs, He, Ms, Mi = y
         lambda_, beta_m, mu_m, theta_m, mu_h, beta_h, theta_h, gamma_h = params
     
         # Calculate total populations
@@ -66,14 +66,14 @@ def generate_smooth_data(
     device = torch.device('cpu')
 
     # Initial param's input "to_learn": [Ms0, Me0, ..., beta_h, beta_m, gamma_h, lambda, mu_m, theta_h, theta_m] of ODE
-    Hit0 = torch.tensor(12, dtype=torch.float32)
+    Itot0 = torch.tensor(12, dtype=torch.float32)
     y0 = (
-        torch.tensor((Hit0, cfg["Hi0"], cfg["Me0"], 
+        torch.tensor((Itot0, cfg["Hi0"], cfg["Me0"], 
                      cfg["Hr0"], cfg["Hs0"], 
                      cfg["He0"], cfg["Ms0"], 
                      cfg["Mi0"]),dtype=torch.float32)
         if parameters is None
-        else torch.tensor((Hit0, parameters["Hi0"], parameters["Me0"], 
+        else torch.tensor((Itot0, parameters["Hi0"], parameters["Me0"], 
                           parameters["Hr0"], parameters["Hs0"], 
                           parameters["He0"], parameters["Ms0"], 
                           parameters["Mi0"]),dtype=torch.float32)

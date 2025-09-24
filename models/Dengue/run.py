@@ -92,7 +92,7 @@ if __name__ == "__main__":
         log.info("   Initializing the neural net ...")
         net = base.NeuralNet(
             # input_size=batch_size,
-            input_size=1,  # only hit at t=0
+            input_size=1,  # only Itot at t=0
             output_size=len(to_learn),
             **model_cfg["NeuralNet"],
         ).to(device)

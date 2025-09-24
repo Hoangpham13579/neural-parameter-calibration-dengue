@@ -21,7 +21,7 @@ $$
     \frac{dHe(t)}{dt} &= \beta_{h} \cdot \frac{Mi(t)}{M} \cdot Hs(t) - (\theta_h + \mu_h) \cdot He(t) \\
     \frac{dHi(t)}{dt} &= \theta_{h} \cdot He(t) - (\gamma_h + \mu_h) \cdot Hi(t) \\
     \frac{dHr(t)}{dt} &= \gamma_{h} \cdot Hi(t) - \mu_h \cdot Hr(t) \\
-    \frac{dHit(t)}{dt} &= \theta_{h} \cdot He(t)
+    \frac{dI_{tot}(T)}{dt} &= \theta_{h} \cdot He(t)
 \end{aligned}
 $$
 
@@ -70,6 +70,11 @@ from [PyPI](https://pypi.org/project/utopya/), as well as all other requirements
 
 ```commandline
 pip install -r requirements.txt
+```
+
+If this error exist "ModuleNotFoundError: No module named 'ruamel.yaml'", please reinstall the library
+```commandline
+python3 -m pip install --force-reinstall ruamel.yaml
 ```
 
 This assumes your current directory is the project folder.
