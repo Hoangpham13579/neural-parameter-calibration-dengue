@@ -72,6 +72,11 @@ from [PyPI](https://pypi.org/project/utopya/), as well as all other requirements
 pip install -r requirements.txt
 ```
 
+If this error exist "ModuleNotFoundError: No module named 'ruamel.yaml'", please reinstall the library
+```commandline
+python3 -m pip install --force-reinstall ruamel.yaml
+```
+
 This assumes your current directory is the project folder.
 You should now be able to invoke the utopya CLI:
 ```commandline
