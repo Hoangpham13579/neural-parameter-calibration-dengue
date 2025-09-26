@@ -17,18 +17,17 @@ $$
     \frac{dMs(t)}{dt} &= \lambda - \beta_{m} \cdot \frac{Hi(t)}{H} \cdot Ms(t) - \mu_m \cdot Ms(t) \\
     \frac{dMe(t)}{dt} &= \beta_{m} \cdot \frac{Hi(t)}{H} \cdot Ms(t) - (\theta_m + \mu_m) \cdot Me(t) \\
     \frac{dMi(t)}{dt} &= \theta_{m} \cdot Me(t) - \mu_m \cdot Mi(t) \\
-    \frac{dHs(t)}{dt} &= \mu_{h} \cdot H - \beta_{h} \cdot \frac{Mi(t)}{M} \cdot Hs(t) - \mu_h \cdot Hs(t) \\
-    \frac{dHe(t)}{dt} &= \beta_{h} \cdot \frac{Mi(t)}{M} \cdot Hs(t) - (\theta_h + \mu_h) \cdot He(t) \\
+    \frac{dHs(t)}{dt} &= \mu_{h} \cdot H - \beta_{h} \cdot \frac{Mi(t)}{M(t)} \cdot Hs(t) - \mu_h \cdot Hs(t) \\
+    \frac{dHe(t)}{dt} &= \beta_{h} \cdot \frac{Mi(t)}{M(t)} \cdot Hs(t) - (\theta_h + \mu_h) \cdot He(t) \\
     \frac{dHi(t)}{dt} &= \theta_{h} \cdot He(t) - (\gamma_h + \mu_h) \cdot Hi(t) \\
-    \frac{dHr(t)}{dt} &= \gamma_{h} \cdot Hi(t) - \mu_h \cdot Hr(t) \\
-    \frac{dI_{tot}(T)}{dt} &= \theta_{h} \cdot He(t)
+    \frac{dHr(t)}{dt} &= \gamma_{h} \cdot Hi(t) - \mu_h \cdot Hr(t)
 \end{aligned}
 $$
 
 
 This project focuses on calibrating the parameters of an Ordinary Differential Equations (ODE) system to improve Dengue Outbreak forecasting with the help of a neural network. The repository includes all code and models featured in our publications related to this subject, along with the scripts used for generating figures.
 
-Our implementation largely depends on publications:
+Our implementation largely depends on the implementations of the following publications:
 - T. Gaskin, G. Pavliotis, M. Girolami. *Neural parameter calibration for large-scale multiagent models.* PNAS **120**, 7, 2023.
 https://doi.org/10.1073/pnas.2216415120 (`HarrisWilson` and `SIR` models)
 
@@ -433,3 +432,6 @@ See the model-specific README files for a guide to each model. The README files 
 
 ## Publicated figures generation
 For generating the figures published in our [Neural Parameter Calibration for Dengue Outbreak Forecasting](), please refer to the Jupyter notebook [visualization](figure-generation/visualisation.ipynb) and run all cells sequentially.
+
+## Applying new dataset to NPC
+For applying new dataset into the NPC framework, please refer to the Jupyter notebook [process_data](data/Dengue/process_data.ipynb) to format the data before running NPC.
