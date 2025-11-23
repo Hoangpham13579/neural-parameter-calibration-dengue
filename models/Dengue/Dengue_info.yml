@@ -10,7 +10,7 @@
 ---
 # -- General information and options
 model_name: Dengue
-project_name: NeuralABM_dengue
+project_name: neural-parameter-calibration-dengue
 
 # -- Path information, interpreted relative to this file
 paths:

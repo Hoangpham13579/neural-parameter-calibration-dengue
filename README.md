@@ -430,8 +430,5 @@ This repository contains the following models:
   
 See the model-specific README files for a guide to each model. The README files are located in the respective `Dengue` folder.
 
-## Publicated figures generation
+## Published figures generation
 For generating the figures published in our [Neural Parameter Calibration for Dengue Outbreak Forecasting](), please refer to the Jupyter notebook [visualization](figure-generation/visualisation.ipynb) and run all cells sequentially.
-
-## Applying new dataset to NPC
-For applying new dataset into the NPC framework, please refer to the Jupyter notebook [process_data](data/Dengue/process_data.ipynb) to format the data before running NPC.

@@ -3,7 +3,7 @@ perform_sweep: True
 parameter_space:
   seed: !sweep
     default: 27
-    range: [1]
+    range: [15, 25]
   write_start: 1
   write_every: 10    # total_batches = total_epoch *(total_training_set // batch_size)
   num_epochs: 2000
